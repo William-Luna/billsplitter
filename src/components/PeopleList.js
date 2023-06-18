@@ -9,7 +9,11 @@ const PersonList = () => {
   return (
     <div>
       {people.map(person =>
-        <div>{person.name}</div>
+        <div>{person.name} -
+          {person.items.map(item =>
+            <span> {item.name}</span>
+          )}
+        </div>
       )}
     </div>
   )

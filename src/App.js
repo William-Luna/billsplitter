@@ -1,5 +1,7 @@
 import PeopleList from './components/PeopleList'
 import PersonForm from './components/PersonForm'
+import ItemForm from './components/ItemForm'
+
 const App = () => {
 
 
@@ -7,6 +9,7 @@ const App = () => {
     <div >
       <h1>Bill Splitter</h1>
       <PersonForm />
+      <ItemForm />
       <PeopleList />
     </div>
   )
