@@ -9,9 +9,9 @@ const PersonList = () => {
   return (
     <div>
       {people.map(person =>
-        <div>{person.name} -
+        <div key={person.name}>{person.name} -
           {person.items.map(item =>
-            <span> {item.name}</span>
+            <span key={item.name}> {item.name} ({item.price}) </span>
           )}
         </div>
       )}
