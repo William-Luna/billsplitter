@@ -18,10 +18,12 @@ const PersonForm = () => {
   }
 
   return (
-    <form onSubmit={addNewPerson}>
-      <input name='name' value={name} onChange={({ target }) => setName(target.value)} required />
-      <button type='submit'>Add Person</button>
-    </form>
+    <div>
+      <form onSubmit={addNewPerson}>
+        <input name='name' value={name} onChange={({ target }) => setName(target.value)} required />
+        <button type='submit'>Add Person</button>
+      </form>
+    </div>
   )
 }
 

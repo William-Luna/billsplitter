@@ -1,9 +1,9 @@
 import PeopleList from './components/PeopleList'
 import PersonForm from './components/PersonForm'
 import ItemForm from './components/ItemForm'
+import ResultDisplay from './components/ResultDisplay'
 
 const App = () => {
-
 
   return (
     <div >
@@ -11,6 +11,7 @@ const App = () => {
       <PersonForm />
       <ItemForm />
       <PeopleList />
+      <ResultDisplay />
     </div>
   )
 }
