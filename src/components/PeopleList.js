@@ -13,8 +13,10 @@ const PersonList = () => {
           {person.items.map(item =>
             <span key={item.name}> {item.name} ({item.price}) </span>
           )}
+          <div>Subtotal - {person.subtotal}</div>
         </div>
       )}
+      <br />
     </div>
   )
 }

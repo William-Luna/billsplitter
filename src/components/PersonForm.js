@@ -11,7 +11,8 @@ const PersonForm = () => {
 
     const newPerson = {
       name,
-      items: []
+      items: [],
+      subtotal: 0
     }
 
     dispatch(addPerson(newPerson))

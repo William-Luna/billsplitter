@@ -8,7 +8,8 @@ const initItem = {
 
 const initPerson = {
   name: 'init',
-  items: [initItem]
+  items: [initItem],
+  subtotal: 100
 }
 
 const peopleSlice = createSlice({

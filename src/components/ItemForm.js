@@ -24,7 +24,7 @@ const ItemForm = () => {
       price
     }
 
-    const personWithNewItem = { ...targetPerson, items: [...targetPerson.items, newItem] }
+    const personWithNewItem = { ...targetPerson, items: [...targetPerson.items, newItem], subtotal: parseFloat(targetPerson.subtotal + newItem.price).toFixed(2) }
 
     dispatch(updateItemsOfPerson(personWithNewItem))
 
