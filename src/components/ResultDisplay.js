@@ -11,13 +11,9 @@ const ResultDisplay = () => {
     console.log(`allSubtotal: ${allSubtotal}`)
 
     const taxPercentage = parseFloat(tax / allSubtotal)
-    console.log(`taxPercentage: ${taxPercentage}`)
     const totalWithTax = parseFloat(person.subtotal * (1.00 + taxPercentage))
-    console.log(`totalWithTax: ${totalWithTax}`)
     const tipPercentage = parseFloat(tip / totalWithTax)
-    console.log(`tipPercentage: ${tipPercentage}`)
     const total = parseFloat(totalWithTax * (1.00 + tipPercentage)).toFixed(2)
-    console.log(`total: ${total}`)
     return total
 
   }
