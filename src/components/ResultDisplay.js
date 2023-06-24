@@ -6,14 +6,14 @@ const ResultDisplay = () => {
   const tax = useSelector(({ tax }) => { return tax })
 
   const calculateTotal = person => {
+    if (person.subtotal === 0) return parseFloat(0).toFixed(2)
     //const personSubtotal = person.items.reduce((accum, next) => { return accum + parseFloat(next.price) }, 0)
     const allSubtotal = people.reduce((accum, next) => { return accum + parseFloat(next.subtotal) }, 0)
-    console.log(`allSubtotal: ${allSubtotal}`)
 
     const taxPercentage = parseFloat(tax / allSubtotal)
-    const totalWithTax = parseFloat(person.subtotal * (1.00 + taxPercentage))
-    const tipPercentage = parseFloat(tip / totalWithTax)
-    const total = parseFloat(totalWithTax * (1.00 + tipPercentage)).toFixed(2)
+    const indivTotalWithTax = parseFloat(person.subtotal * (1.00 + taxPercentage))
+    const tipPercentage = parseFloat(tip / (allSubtotal + tax))
+    const total = parseFloat(indivTotalWithTax * (1.00 + tipPercentage)).toFixed(2)
     return total
 
   }
@@ -21,7 +21,7 @@ const ResultDisplay = () => {
 
   return (<div>
     {people.map(person =>
-      <div>{person.name} owes ${calculateTotal(person)}.</div>
+      <div key={person.id}>{person.name} owes ${calculateTotal(person)}.</div>
     )}
   </div>)
 }

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { addPerson } from "../reducers/peopleReducer"
+import { v4 } from "uuid"
 
 const PersonForm = () => {
   const [name, setName] = useState('')
@@ -10,9 +11,10 @@ const PersonForm = () => {
     event.preventDefault()
 
     const newPerson = {
+      id: v4(),
       name,
       items: [],
-      subtotal: 0
+      subtotal: parseFloat(0)
     }
 
     dispatch(addPerson(newPerson))

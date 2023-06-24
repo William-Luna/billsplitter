@@ -1,20 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 //person object model
-const initItem = {
-  name: 'item',
-  price: 100
-}
+// const initItem = {
+//   id: 'itemid',
+//   name: 'item',
+//   price: parseFloat(100)
+// }
 
-const initPerson = {
-  name: 'init',
-  items: [initItem],
-  subtotal: 100
-}
+// const initPerson = {
+//   id: 'id',
+//   name: 'init',
+//   items: [initItem],
+//   subtotal: parseFloat(100)
+// }
 
 const peopleSlice = createSlice({
   name: 'people',
-  initialState: [initPerson],
+  initialState: [],
   reducers: {
     addPerson(state, action) {
       state.push(action.payload)

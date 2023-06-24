@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateItemsOfPerson } from '../reducers/peopleReducer'
+import { v4 } from 'uuid'
 
 const ItemForm = () => {
   const dispatch = useDispatch()
@@ -20,11 +21,12 @@ const ItemForm = () => {
     console.log(`TargetPerson: ${targetPerson.name}`)
 
     const newItem = {
+      id: v4(),
       name: itemName,
-      price
+      price: parseFloat(price)
     }
 
-    const personWithNewItem = { ...targetPerson, items: [...targetPerson.items, newItem], subtotal: parseFloat(targetPerson.subtotal + newItem.price).toFixed(2) }
+    const personWithNewItem = { ...targetPerson, items: [...targetPerson.items, newItem], subtotal: parseFloat(targetPerson.subtotal + newItem.price) }
 
     dispatch(updateItemsOfPerson(personWithNewItem))
 
@@ -38,7 +40,7 @@ const ItemForm = () => {
         <select name='name' onChange={({ target }) => setName(target.value)}>
           <option value=''>Select A Person</option>
           {people.map(person =>
-            <option key={person.name} value={person.name}>{person.name}</option>
+            <option key={person.id} value={person.name}>{person.name}</option>
           )}
         </select>
         <input type='text' name='itemName' value={itemName} onChange={({ target }) => setItemName(target.value)} placeholder='Item Name' required /><br />
