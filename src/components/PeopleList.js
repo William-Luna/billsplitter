@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import PersonDetails from "./PersonDetails"
 
 const PersonList = () => {
 
@@ -9,12 +10,7 @@ const PersonList = () => {
   return (
     <div>
       {people.map(person =>
-        <div key={person.id}>{person.name} -
-          {person.items.map(item =>
-            <span key={item.id}> {item.name} ({item.price}) </span>
-          )}
-          <div>Subtotal - {person.subtotal}</div>
-        </div>
+        <PersonDetails person={person} />
       )}
       <br />
     </div>
