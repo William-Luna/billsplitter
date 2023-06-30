@@ -8,10 +8,10 @@ const PersonDetails = ({ person }) => {
 
   return (
     <div>
-      {person.name} - Subtotal: {person.subtotal}
+      {person.name} - Subtotal: ${person.subtotal.toFixed(2)}
       <button onClick={() => toggleViewItems(!viewItems)}>{viewLabel}</button>
       {person.items.map(item =>
-        <span style={{ display: viewItems ? '' : 'none' }} key={item.id}> {item.name} ({item.price}) </span>
+        <span style={{ display: viewItems ? '' : 'none' }} key={item.id}> {item.name} (${item.price.toFixed(2)}) </span>
       )}
     </div>
   )

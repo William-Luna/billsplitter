@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateItemsOfPerson } from '../reducers/peopleReducer'
 import { v4 } from 'uuid'
+import { Select, MenuItem, InputLabel, FormControl } from '@mui/material'
 
 const ItemForm = () => {
   const dispatch = useDispatch()
@@ -37,15 +38,17 @@ const ItemForm = () => {
   return (
     <div>
       <form onSubmit={addItem}>
-        <select name='name' onChange={({ target }) => setName(target.value)}>
-          <option value=''>Select A Person</option>
-          {people.map(person =>
-            <option key={person.id} value={person.name}>{person.name}</option>
-          )}
-        </select>
-        <input type='text' name='itemName' value={itemName} onChange={({ target }) => setItemName(target.value)} placeholder='Item Name' required /><br />
-        <input type='number' name='price' value={price} onChange={({ target }) => setPrice(target.value)} placeholder='Item Price' min='0' step='0.01' required /><br />
-        <button type='submit'>Add Item</button>
+        <FormControl variant="filled">
+          <InputLabel id="person-of-item-label">Select A Person</InputLabel>
+          <Select name='name' labelId="person-of-item-label" label="Select A Person" onChange={({ target }) => setName(target.value)}>
+            {people.map(person =>
+              <MenuItem key={person.id} value={person.name}>{person.name}</MenuItem>
+            )}
+          </Select>
+          <input type='text' name='itemName' value={itemName} onChange={({ target }) => setItemName(target.value)} placeholder='Item Name' required /><br />
+          <input type='number' name='price' value={price} onChange={({ target }) => setPrice(target.value)} placeholder='Item Price' min='0' step='0.01' required /><br />
+          <button type='submit'>Add Item</button>
+        </FormControl>
       </form>
     </div>
   )
