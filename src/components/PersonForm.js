@@ -18,7 +18,7 @@ const PersonForm = () => {
       subtotal: parseFloat(0)
     }
 
-    event.target.name.value = ''
+    event.target.name = ''
 
     dispatch(addPerson(newPerson))
   }

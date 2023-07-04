@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import PersonDetails from "./PersonDetails"
 
-const PersonList = () => {
+const PeopleList = () => {
 
   const people = useSelector(({ people }) => {
     return people
@@ -10,11 +10,11 @@ const PersonList = () => {
   return (
     <div>
       {people.map(person =>
-        <PersonDetails person={person} />
+        <PersonDetails key={person.id} person={person} />
       )}
       <br />
     </div>
   )
 }
 
-export default PersonList
+export default PeopleList
