@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { setTip } from "../reducers/tipReducer"
 import { setTax } from "../reducers/taxReducer"
-import { Button, TextField } from "@mui/material"
+import { Button, FormControl, TextField } from "@mui/material"
 
 const TaxTipOptions = () => {
   const dispatch = useDispatch()
@@ -33,17 +33,21 @@ const TaxTipOptions = () => {
     <div>
       <div>
         <form onSubmit={handleTax}>
-          <TextField type='number' name='tax' min='0' step='0.01' placeholder='(Optional) Set Tax Amount' />
-          <Button variant="contained" type='submit'>Set</Button>
+          <FormControl>
+            <TextField type='number' name='tax' min='0' step='0.01' placeholder='(Optional) Set Tax Amount' />
+            <Button variant="contained" type='submit'>Set</Button>
+            <Button onClick={clearTax}>Reset</Button>
+          </FormControl>
         </form>
-        <Button onClick={clearTax}>Reset</Button>
       </div>
       <div>
         <form onSubmit={handleTip}>
-          <TextField type='number' name='tip' min='0' step='0.01' placeholder='(Optional) Set Tip Amount' />
-          <Button variant="contained" type='submit'>Set</Button>
+          <FormControl>
+            <TextField type='number' name='tip' min='0' step='0.01' placeholder='(Optional) Set Tip Amount' />
+            <Button variant="contained" type='submit'>Set</Button>
+            <Button onClick={clearTip}>Reset</Button>
+          </FormControl>
         </form>
-        <Button onClick={clearTip}>Reset</Button>
       </div>
     </div>
   )

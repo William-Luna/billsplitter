@@ -1,3 +1,4 @@
+import { Box } from "@mui/material"
 import { useSelector } from "react-redux"
 
 const ResultDisplay = () => {
@@ -19,11 +20,13 @@ const ResultDisplay = () => {
   }
 
 
-  return (<div>
-    {people.map(person =>
-      <div key={person.id}>{person.name} owes ${calculateTotal(person)}.</div>
-    )}
-  </div>)
+  return (
+    <Box sx={{ border: people.length === 0 ? 0 : 1, borderRadius: 2 }}>
+      {people.map(person =>
+        <div key={person.id}>{person.name} owes ${calculateTotal(person)}.</div>
+      )}
+    </Box>
+  )
 }
 
 export default ResultDisplay

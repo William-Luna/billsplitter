@@ -39,12 +39,12 @@ const ItemForm = () => {
       <form onSubmit={addItem}>
         <FormControl variant="filled">
           <InputLabel id="person-of-item-label">Select A Person</InputLabel>
-          <Select name='name' labelId="person-of-item-label" label="Select A Person" defaultValue="" onChange={({ target }) => setName(target.value)}>
+          <Select name='name' labelId="person-of-item-label" label="Select A Person" defaultValue="" onChange={({ target }) => setName(target.value)} required>
             <MenuItem disabled>Pick A Person</MenuItem>
             {people.map(person =>
               <MenuItem key={person.id} value={person.name}>{person.name}</MenuItem>
             )}
-          </Select>
+          </Select>< br />
           <TextField variant="filled" label="Item Name" size="small" name='itemName' value={itemName} onChange={({ target }) => setItemName(target.value)} placeholder='e.g. Pasta' required /><br />
           <TextField variant="filled" label="Item Price" type='number' name='price' value={price} onChange={({ target }) => setPrice(target.value)} min='0' step='0.01' required /><br />
           <Button variant="contained" type='submit'>Add Item</Button>

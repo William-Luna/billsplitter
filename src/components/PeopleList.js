@@ -12,7 +12,6 @@ const PeopleList = () => {
       {people.map(person =>
         <PersonDetails key={person.id} person={person} />
       )}
-      <br />
     </div>
   )
 }
