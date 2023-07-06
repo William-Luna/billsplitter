@@ -10,11 +10,13 @@ const PersonDetails = ({ person }) => {
   return (
     <>
       <Paper elevation={2}>
-        {person.name} - Subtotal: ${person.subtotal.toFixed(2)}
+        <b>{person.name} - Subtotal: ${person.subtotal.toFixed(2)} </b>
         <button onClick={() => toggleViewItems(!viewItems)}>{viewLabel}</button>
-        {person.items.map(item =>
-          <span style={{ display: viewItems ? '' : 'none' }} key={item.id}> {item.name} (${item.price.toFixed(2)}) </span>
-        )}
+        <div>
+          {person.items.map(item =>
+            <span style={{ display: viewItems ? '' : 'none' }} key={item.id}> {item.name} (${item.price.toFixed(2)}) <br /></span>
+          )}
+        </div>
       </Paper>
       <br />
     </>

@@ -9,7 +9,7 @@ const ItemForm = () => {
 
   const [name, setName] = useState('')
   const [itemName, setItemName] = useState('')
-  const [price, setPrice] = useState(0.00)
+  const [price, setPrice] = useState(0)
 
   const people = useSelector(({ people }) => {
     return people
@@ -27,6 +27,8 @@ const ItemForm = () => {
     }
 
     const personWithNewItem = { ...targetPerson, items: [...targetPerson.items, newItem], subtotal: parseFloat(targetPerson.subtotal + newItem.price) }
+    setItemName('')
+    setPrice(0)
 
     dispatch(updateItemsOfPerson(personWithNewItem))
 
@@ -39,7 +41,7 @@ const ItemForm = () => {
       <form onSubmit={addItem}>
         <FormControl variant="filled">
           <InputLabel id="person-of-item-label">Select A Person</InputLabel>
-          <Select name='name' labelId="person-of-item-label" label="Select A Person" defaultValue="" onChange={({ target }) => setName(target.value)} required>
+          <Select name='name' labelId="person-of-item-label" label="Select A Person" defaultValue="" onChange={({ target }) => setName(target.value)} required align="left">
             <MenuItem disabled>Pick A Person</MenuItem>
             {people.map(person =>
               <MenuItem key={person.id} value={person.name}>{person.name}</MenuItem>
