@@ -3,8 +3,8 @@ import { useSelector } from "react-redux"
 
 const ResultDisplay = () => {
   const people = useSelector(({ people }) => { return people })
-  const tip = useSelector(({ tip }) => { return tip })
-  const tax = useSelector(({ tax }) => { return tax })
+  const tip = parseFloat(useSelector(({ tip }) => { return tip }))
+  const tax = parseFloat(useSelector(({ tax }) => { return tax }))
 
   const allSubtotal = people.reduce((accum, next) => { return accum + parseFloat(next.subtotal) }, 0)
   const billTotal = parseFloat(tax + tip + allSubtotal).toFixed(2)
@@ -25,8 +25,8 @@ const ResultDisplay = () => {
     <div>
       <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>Summary</Typography>
       <Paper evaluation={2} align="left">
-        <div><b>Tax</b> - ${tax.toFixed(2)}</div>
-        <div><b>Tip</b> - ${tip.toFixed(2)}</div>
+        <div><b>Tax</b> - ${parseFloat(tax).toFixed(2)}</div>
+        <div><b>Tip</b> - ${parseFloat(tip).toFixed(2)}</div>
         <div><b>Bill Total</b> - ${billTotal}</div><br />
         {people.map(person =>
           <div key={person.id}><b>{person.name}</b> owes ${calculateIndivTotal(person)}.</div>

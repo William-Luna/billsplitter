@@ -1,4 +1,5 @@
-import { Paper } from "@mui/material"
+import { Button, IconButton, List, ListItem, ListItemText, Paper, Typography } from "@mui/material"
+import DeleteIcon from '@mui/icons-material/Delete'
 import { useState } from "react"
 
 const PersonDetails = ({ person }) => {
@@ -10,12 +11,22 @@ const PersonDetails = ({ person }) => {
   return (
     <>
       <Paper elevation={2}>
-        <b>{person.name} - Subtotal: ${person.subtotal.toFixed(2)} </b>
-        <button onClick={() => toggleViewItems(!viewItems)}>{viewLabel}</button>
+        <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>{person.name}</Typography>
+        <Typography variant="subtitle2">Subtotal: ${person.subtotal.toFixed(2)} </Typography>
+        <Button onClick={() => toggleViewItems(!viewItems)}>{viewLabel}</Button>
         <div>
-          {person.items.map(item =>
-            <span style={{ display: viewItems ? '' : 'none' }} key={item.id}> {item.name} (${item.price.toFixed(2)}) <br /></span>
-          )}
+          <List>
+            {person.items.map(item =>
+              <ListItem sx={{ display: viewItems ? '' : 'none' }} key={item.id}
+                secondaryAction={
+                  <IconButton edge="end">
+                    <DeleteIcon />
+                  </IconButton>}
+              >
+                <ListItemText primary={item.name} secondary={item.price.toFixed(2)} />
+              </ListItem>
+            )}
+          </List>
         </div>
       </Paper>
       <br />
