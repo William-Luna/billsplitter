@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateItemsOfPerson } from '../reducers/peopleReducer'
 import { v4 } from 'uuid'
-import { Select, MenuItem, InputLabel, FormControl, TextField, Button } from '@mui/material'
+import { Select, MenuItem, InputLabel, FormControl, TextField, Button, InputAdornment } from '@mui/material'
 
 const ItemForm = () => {
   const dispatch = useDispatch()
@@ -48,7 +48,10 @@ const ItemForm = () => {
             )}
           </Select>< br />
           <TextField variant="filled" label="Item Name" size="small" name='itemName' value={itemName} onChange={({ target }) => setItemName(target.value)} placeholder='e.g. Pasta' required /><br />
-          <TextField variant="filled" label="Item Price" type='number' name='price' value={price} onChange={({ target }) => setPrice(target.value)} min='0' step='0.01' required /><br />
+          <TextField variant="filled" label="Item Price" type='number' name='price' value={price} onChange={({ target }) => setPrice(target.value)} min='0' step='0.01' required
+            InputProps={{
+              startAdornment: <InputAdornment position="start">$</InputAdornment>,
+            }} /><br />
           <Button variant="contained" type='submit'>Add Item</Button>
         </FormControl>
       </form>

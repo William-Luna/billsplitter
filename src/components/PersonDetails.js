@@ -1,4 +1,4 @@
-import { Button, IconButton, List, ListItem, ListItemText, Paper, Typography } from "@mui/material"
+import { Button, Collapse, IconButton, List, ListItem, ListItemText, Paper, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useState } from "react"
 
@@ -10,11 +10,11 @@ const PersonDetails = ({ person }) => {
 
   return (
     <>
-      <Paper elevation={2}>
+      <Paper elevation={2} sx={{ p: 1 }}>
         <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>{person.name}</Typography>
         <Typography variant="subtitle2">Subtotal: ${person.subtotal.toFixed(2)} </Typography>
         <Button onClick={() => toggleViewItems(!viewItems)}>{viewLabel}</Button>
-        <div>
+        <Collapse in={viewItems}>
           <List>
             {person.items.map(item =>
               <ListItem sx={{ display: viewItems ? '' : 'none' }} key={item.id}
@@ -27,7 +27,7 @@ const PersonDetails = ({ person }) => {
               </ListItem>
             )}
           </List>
-        </div>
+        </Collapse>
       </Paper>
       <br />
     </>

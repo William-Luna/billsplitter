@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { setTip } from "../reducers/tipReducer"
 import { setTax } from "../reducers/taxReducer"
-import { Button, FormControl, TextField } from "@mui/material"
+import { Button, FormControl, InputAdornment, TextField } from "@mui/material"
 
 const TaxTipOptions = () => {
   const dispatch = useDispatch()
@@ -10,14 +10,14 @@ const TaxTipOptions = () => {
     event.preventDefault()
     const tax = event.target.tax.value
     dispatch(setTax(tax))
-
+    event.target.tax.value = ''
   }
 
   const handleTip = event => {
     event.preventDefault()
     const tip = event.target.tip.value
     dispatch(setTip(tip))
-
+    event.target.tip.value = ''
   }
 
   const clearTax = () => {
@@ -34,7 +34,10 @@ const TaxTipOptions = () => {
       <div>
         <form onSubmit={handleTax}>
           <FormControl>
-            <TextField type='number' name='tax' min='0' step='0.01' placeholder='(Optional) Set Tax Amount' />
+            <TextField variant="filled" label="Tax Amount" size="small" type='number' name='tax' min='0' step='0.01'
+              InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>
+              }} />
             <Button variant="contained" type='submit'>Set</Button>
             <Button onClick={clearTax}>Reset</Button>
           </FormControl>
@@ -43,7 +46,10 @@ const TaxTipOptions = () => {
       <div>
         <form onSubmit={handleTip}>
           <FormControl>
-            <TextField type='number' name='tip' min='0' step='0.01' placeholder='(Optional) Set Tip Amount' />
+            <TextField variant="filled" label="Tip Amount" type='number' name='tip' min='0' step='0.01'
+              InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              }} />
             <Button variant="contained" type='submit'>Set</Button>
             <Button onClick={clearTip}>Reset</Button>
           </FormControl>

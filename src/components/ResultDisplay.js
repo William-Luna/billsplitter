@@ -24,7 +24,7 @@ const ResultDisplay = () => {
   return (
     <div>
       <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>Summary</Typography>
-      <Paper evaluation={2} align="left">
+      <Paper evaluation={2} align="left" sx={{ p: 1 }}>
         <div><b>Tax</b> - ${parseFloat(tax).toFixed(2)}</div>
         <div><b>Tip</b> - ${parseFloat(tip).toFixed(2)}</div>
         <div><b>Bill Total</b> - ${billTotal}</div><br />
