@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateItemsOfPerson } from '../reducers/peopleReducer'
 import { v4 } from 'uuid'
-import { Select, MenuItem, InputLabel, FormControl, TextField, Button, InputAdornment } from '@mui/material'
+import { Select, MenuItem, InputLabel, FormControl, TextField, Button, InputAdornment, Paper, Typography } from '@mui/material'
 
 const ItemForm = () => {
   const dispatch = useDispatch()
@@ -37,25 +37,28 @@ const ItemForm = () => {
 
 
   return (
-    <div>
-      <form onSubmit={addItem}>
-        <FormControl variant="filled">
-          <InputLabel id="person-of-item-label">Select A Person</InputLabel>
-          <Select name='name' labelId="person-of-item-label" label="Select A Person" defaultValue="" onChange={({ target }) => setName(target.value)} required align="left">
-            <MenuItem disabled>Pick A Person</MenuItem>
-            {people.map(person =>
-              <MenuItem key={person.id} value={person.name}>{person.name}</MenuItem>
-            )}
-          </Select>< br />
-          <TextField variant="filled" label="Item Name" size="small" name='itemName' value={itemName} onChange={({ target }) => setItemName(target.value)} placeholder='e.g. Pasta' required /><br />
-          <TextField variant="filled" label="Item Price" type='number' name='price' value={price} onChange={({ target }) => setPrice(target.value)} min='0' step='0.01' required
-            InputProps={{
-              startAdornment: <InputAdornment position="start">$</InputAdornment>,
-            }} /><br />
-          <Button variant="contained" type='submit'>Add Item</Button>
-        </FormControl>
-      </form>
-    </div>
+    <>
+      <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>Add Items</Typography>
+      <Paper elevation={2} sx={{ p: 2 }}>
+        <form onSubmit={addItem}>
+          <FormControl variant="filled">
+            <InputLabel id="person-of-item-label">Select A Person</InputLabel>
+            <Select name='name' labelId="person-of-item-label" label="Select A Person" defaultValue="" onChange={({ target }) => setName(target.value)} required align="left">
+              <MenuItem disabled>Pick A Person</MenuItem>
+              {people.map(person =>
+                <MenuItem key={person.id} value={person.name}>{person.name}</MenuItem>
+              )}
+            </Select>< br />
+            <TextField variant="filled" label="Item Name" size="small" name='itemName' value={itemName} onChange={({ target }) => setItemName(target.value)} placeholder='e.g. Pasta' required /><br />
+            <TextField variant="filled" label="Item Price" type='number' name='price' value={price} onChange={({ target }) => setPrice(target.value)} min='0' step='0.01' required
+              InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              }} /><br />
+            <Button variant="contained" type='submit'>Add Item</Button>
+          </FormControl>
+        </form>
+      </Paper>
+    </>
 
   )
 }

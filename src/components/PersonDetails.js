@@ -1,12 +1,28 @@
 import { Button, Collapse, IconButton, List, ListItem, ListItemText, Paper, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { updateItemsOfPerson } from '../reducers/peopleReducer'
 
 const PersonDetails = ({ person }) => {
 
+  const dispatch = useDispatch()
+
   const [viewItems, toggleViewItems] = useState(false)
+  const people = useSelector(({ people }) => {
+    return people
+  })
 
   const viewLabel = viewItems ? 'Hide Items' : 'View Items'
+
+  // const deleteItem = item => {
+  //   const targetPerson = people.find(p => person.name === p.name)
+  //   const updatedList = targetPerson.items.filter(i => item.id !== i.id)
+
+  //   const personWithNewItem = { ...targetPerson, items: updatedList, subtotal: parseFloat(targetPerson.subtotal - item.price) }
+
+  //   dispatch(updateItemsOfPerson(personWithNewItem))
+  // }
 
   return (
     <>
@@ -17,13 +33,13 @@ const PersonDetails = ({ person }) => {
         <Collapse in={viewItems}>
           <List>
             {person.items.map(item =>
-              <ListItem sx={{ display: viewItems ? '' : 'none' }} key={item.id}
+              <ListItem key={item.id}
                 secondaryAction={
-                  <IconButton edge="end">
+                  <IconButton edge="end" >
                     <DeleteIcon />
                   </IconButton>}
               >
-                <ListItemText primary={item.name} secondary={item.price.toFixed(2)} />
+                <ListItemText primary={item.name} secondary={`$${item.price.toFixed(2)}`} />
               </ListItem>
             )}
           </List>

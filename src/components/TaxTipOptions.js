@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { setTip } from "../reducers/tipReducer"
 import { setTax } from "../reducers/taxReducer"
-import { Button, FormControl, InputAdornment, TextField } from "@mui/material"
+import { Button, FormControl, InputAdornment, Paper, TextField, Typography } from "@mui/material"
 
 const TaxTipOptions = () => {
   const dispatch = useDispatch()
@@ -30,8 +30,9 @@ const TaxTipOptions = () => {
 
 
   return (
-    <div>
-      <div>
+    <>
+      <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>Set Tax And Tip</Typography>
+      <Paper elevation={2} sx={{ p: 2 }}>
         <form onSubmit={handleTax}>
           <FormControl>
             <TextField variant="filled" label="Tax Amount" size="small" type='number' name='tax' min='0' step='0.01'
@@ -42,8 +43,6 @@ const TaxTipOptions = () => {
             <Button onClick={clearTax}>Reset</Button>
           </FormControl>
         </form>
-      </div>
-      <div>
         <form onSubmit={handleTip}>
           <FormControl>
             <TextField variant="filled" label="Tip Amount" type='number' name='tip' min='0' step='0.01'
@@ -54,8 +53,8 @@ const TaxTipOptions = () => {
             <Button onClick={clearTip}>Reset</Button>
           </FormControl>
         </form>
-      </div>
-    </div>
+      </Paper>
+    </>
   )
 }
 

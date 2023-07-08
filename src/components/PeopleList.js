@@ -14,7 +14,10 @@ const PeopleList = () => {
       <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>People List</Typography>
       <Grid2 container>
         {people.map(person =>
-          <Grid2 xs={12}><PersonDetails key={person.id} person={person} /></Grid2>
+          <>
+            <Grid2 xs={12} sm={5}><PersonDetails key={person.id} person={person} /></Grid2>
+            <Grid2 xs={12} sm={1}></Grid2>
+          </>
         )}
       </Grid2>
     </div >
