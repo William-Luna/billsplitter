@@ -16,8 +16,6 @@ const Item = ({ item, person }) => {
     const personWithNewItem = { ...person, items: updatedList, subtotal: newSub }
 
     dispatch(updateItemsOfPerson(personWithNewItem))
-    console.log(person.items)
-    console.log(updatedList)
   }
 
 
