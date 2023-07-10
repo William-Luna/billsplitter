@@ -23,7 +23,7 @@ const peopleSlice = createSlice({
     },
     updateItemsOfPerson(state, action) {
       const updatedPerson = action.payload
-      return state.map(person => person.name !== updatedPerson.name ? person : updatedPerson)
+      return state.map(person => person.id !== updatedPerson.id ? person : updatedPerson)
     }
   }
 })
