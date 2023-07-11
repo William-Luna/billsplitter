@@ -39,8 +39,9 @@ const TaxTipOptions = () => {
               InputProps={{
                 startAdornment: <InputAdornment position="start">$</InputAdornment>
               }} />
+            <br />
             <Button variant="contained" type='submit'>Set</Button>
-            <Button onClick={clearTax}>Reset</Button>
+            <Button color="error" onClick={clearTax}>Reset</Button>
           </FormControl>
         </form>
         <form onSubmit={handleTip}>
@@ -49,8 +50,9 @@ const TaxTipOptions = () => {
               InputProps={{
                 startAdornment: <InputAdornment position="start">$</InputAdornment>,
               }} />
+            <br />
             <Button variant="contained" type='submit'>Set</Button>
-            <Button onClick={clearTip}>Reset</Button>
+            <Button color="error" onClick={clearTip}>Reset</Button>
           </FormControl>
         </form>
       </Paper>

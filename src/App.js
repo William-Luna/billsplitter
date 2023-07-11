@@ -3,8 +3,9 @@ import PersonForm from './components/PersonForm'
 import ItemForm from './components/ItemForm'
 import ResultDisplay from './components/ResultDisplay'
 import TaxTipOptions from './components/TaxTipOptions'
-import { Container, CssBaseline, Typography } from '@mui/material'
+import { Container, CssBaseline } from '@mui/material'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
+import TopNavbar from './components/TopNavbar'
 
 const App = () => {
 
@@ -12,7 +13,7 @@ const App = () => {
     <main>
       <CssBaseline />
       <Container>
-        <Typography align="center" gutterBottom variant="h2">Bill Splitter</Typography>
+        <TopNavbar />
         <Grid2 container spacing={2} align="center">
           <Grid2 xs={12} sm={4}>
             <PersonForm />
