@@ -4,6 +4,13 @@ import { addPerson } from "../reducers/peopleReducer"
 import { v4 } from "uuid"
 import { TextField, Button, FormControl, Paper, Typography } from "@mui/material"
 
+const genColor = () => {
+  const r = Math.floor(Math.random() * 255)
+  const g = Math.floor(Math.random() * 255)
+  const b = Math.floor(Math.random() * 255)
+  return `rgb(${r}, ${g}, ${b})`
+}
+
 const PersonForm = () => {
   const [name, setName] = useState('')
   const dispatch = useDispatch()
@@ -15,11 +22,14 @@ const PersonForm = () => {
     //basic same name validation
     if (people.find(p => p.name === name)) return
 
+
+
     const newPerson = {
       id: v4(),
       name,
       items: [],
-      subtotal: parseFloat(0)
+      subtotal: parseFloat(0),
+      color: genColor()
     }
 
     event.target.name.value = ''
