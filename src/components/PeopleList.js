@@ -1,7 +1,7 @@
-import { useSelector } from "react-redux"
-import PersonDetails from "./PersonDetails"
-import { Typography } from "@mui/material"
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
+import { useSelector } from 'react-redux'
+import PersonDetails from './PersonDetails'
+import { Typography } from '@mui/material'
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 
 const PeopleList = () => {
 

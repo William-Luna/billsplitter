@@ -1,14 +1,9 @@
-import { Chart, ArcElement, Tooltip, Legend } from "chart.js/auto"
-import { Doughnut } from "react-chartjs-2"
-import { useSelector } from "react-redux"
+import { Chart, ArcElement, Tooltip, Legend } from 'chart.js/auto'
+import { Doughnut } from 'react-chartjs-2'
 
 Chart.register(ArcElement, Tooltip, Legend)
 
-const DonutChart = () => {
-
-  const people = useSelector(({ people }) => {
-    return people
-  })
+const DonutChart = ({ people }) => {
 
   const names = people.map(p => p.name)
   const totals = people.map(p => p.subtotal)
@@ -19,7 +14,7 @@ const DonutChart = () => {
     labels: names,
     datasets: [
       {
-        label: 'Total',
+        label: 'Subtotal',
         data: totals,
         backgroundColor: bgColors,
         borderColor: bgBorders

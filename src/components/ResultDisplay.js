@@ -1,5 +1,5 @@
-import { Paper, Typography } from "@mui/material"
-import { useSelector } from "react-redux"
+import { Paper, Typography } from '@mui/material'
+import { useSelector } from 'react-redux'
 import DonutChart from './DonutChart'
 
 const ResultDisplay = () => {
@@ -32,7 +32,7 @@ const ResultDisplay = () => {
         {people.map(person =>
           <div key={person.id}><b>{person.name}</b> owes ${calculateIndivTotal(person)}.</div>
         )}
-        <DonutChart />
+        <DonutChart people={people} />
       </Paper>
     </div>
   )

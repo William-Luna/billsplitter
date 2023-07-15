@@ -1,6 +1,6 @@
-import { IconButton, ListItem, ListItemText } from "@mui/material"
+import { IconButton, ListItem, ListItemText } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { useDispatch } from "react-redux"
+import { useDispatch } from 'react-redux'
 import { updateItemsOfPerson } from '../reducers/peopleReducer'
 
 const Item = ({ item, person }) => {

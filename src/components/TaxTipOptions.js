@@ -1,7 +1,7 @@
-import { useDispatch } from "react-redux"
-import { setTip } from "../reducers/tipReducer"
-import { setTax } from "../reducers/taxReducer"
-import { Button, FormControl, InputAdornment, Paper, TextField, Typography } from "@mui/material"
+import { useDispatch } from 'react-redux'
+import { setTip } from '../reducers/tipReducer'
+import { setTax } from '../reducers/taxReducer'
+import { Button, FormControl, InputAdornment, Paper, TextField, Typography } from '@mui/material'
 
 const TaxTipOptions = () => {
   const dispatch = useDispatch()
@@ -35,7 +35,7 @@ const TaxTipOptions = () => {
       <Paper elevation={2} sx={{ p: 2 }}>
         <form onSubmit={handleTax}>
           <FormControl>
-            <TextField variant="filled" label="Tax Amount" size="small" type='number' name='tax' min='0' step='0.01'
+            <TextField variant="filled" label="Tax Amount" size="small" type='number' name='tax' inputProps={{ min: 0, step: 0.01 }}
               InputProps={{
                 startAdornment: <InputAdornment position="start">$</InputAdornment>
               }} />
@@ -46,7 +46,7 @@ const TaxTipOptions = () => {
         </form>
         <form onSubmit={handleTip}>
           <FormControl>
-            <TextField variant="filled" label="Tip Amount" type='number' name='tip' min='0' step='0.01'
+            <TextField variant="filled" label="Tip Amount" type='number' name='tip' inputProps={{ min: 0, step: 0.01 }}
               InputProps={{
                 startAdornment: <InputAdornment position="start">$</InputAdornment>,
               }} />

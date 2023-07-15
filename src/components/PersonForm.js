@@ -1,8 +1,8 @@
-import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { addPerson } from "../reducers/peopleReducer"
-import { v4 } from "uuid"
-import { TextField, Button, FormControl, Paper, Typography } from "@mui/material"
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addPerson } from '../reducers/peopleReducer'
+import { v4 } from 'uuid'
+import { TextField, Button, FormControl, Paper, Typography } from '@mui/material'
 
 const genColor = () => {
   const r = Math.floor(Math.random() * 255)
