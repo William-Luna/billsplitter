@@ -5,15 +5,18 @@ import ResultDisplay from './components/ResultDisplay'
 import TaxTipOptions from './components/TaxTipOptions'
 import TopNavbar from './components/TopNavbar'
 import Footer from './components/Footer'
+import Notification from './components/Notification'
 
 import { Box, Container, CssBaseline, Paper } from '@mui/material'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 
 const App = () => {
 
+
   return (
     <>
       <CssBaseline />
+      <Notification />
       <Box display="flex" flexDirection="column" justifyContent="space-between" alignItems="center">
         <TopNavbar />
         <main>
