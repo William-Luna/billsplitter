@@ -1,25 +1,16 @@
 import { Paper, Typography } from '@mui/material'
 import { useSelector } from 'react-redux'
 import DonutChart from './DonutChart'
+import calculateTotal from '../helpers/calculateTotal'
+import calculateAllSubtotal from '../helpers/calculateAllSubtotal'
 
 const ResultDisplay = () => {
   const people = useSelector(({ people }) => { return people })
   const tip = parseFloat(useSelector(({ tip }) => { return tip }))
   const tax = parseFloat(useSelector(({ tax }) => { return tax }))
 
-  const allSubtotal = people.reduce((accum, next) => { return accum + parseFloat(next.subtotal) }, 0)
+  const allSubtotal = parseFloat(calculateAllSubtotal(people))
   const billTotal = parseFloat(tax + tip + allSubtotal).toFixed(2)
-
-  const calculateIndivTotal = person => {
-    if (person.subtotal === 0) return parseFloat(0).toFixed(2)
-
-    const taxPercentage = parseFloat(tax / allSubtotal)
-    const indivTotalWithTax = parseFloat(person.subtotal * (1.00 + taxPercentage))
-    const tipPercentage = parseFloat(tip / (allSubtotal + parseFloat(tax)))
-    const total = parseFloat(indivTotalWithTax * (1.00 + tipPercentage)).toFixed(2)
-    return total
-
-  }
 
 
   return (
@@ -30,9 +21,9 @@ const ResultDisplay = () => {
         <div><b>Tip</b> - ${parseFloat(tip).toFixed(2)}</div>
         <div><b>Bill Total</b> - ${billTotal}</div><br />
         {people.map(person =>
-          <div key={person.id}><b>{person.name}</b> owes ${calculateIndivTotal(person)}.</div>
+          <div key={person.id}><b>{person.name}</b> owes ${calculateTotal(person, allSubtotal, tax, tip)}.</div>
         )}
-        <DonutChart people={people} />
+        <DonutChart people={people} allSubtotal={allSubtotal} tax={tax} tip={tip} />
       </Paper>
     </div>
   )
