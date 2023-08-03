@@ -1,10 +1,14 @@
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js/auto'
 import { Doughnut } from 'react-chartjs-2'
 import calculateTotal from '../helpers/calculateTotal'
+import { useSelector } from 'react-redux'
 
 Chart.register(ArcElement, Tooltip, Legend)
 
-const DonutChart = ({ people, allSubtotal, tax, tip }) => {
+const DonutChart = ({ allSubtotal }) => {
+  const people = useSelector(({ people }) => { return people })
+  const tip = parseFloat(useSelector(({ tip }) => { return tip }))
+  const tax = parseFloat(useSelector(({ tax }) => { return tax }))
 
   const names = people.map(p => p.name)
   const totals = people.map(p => calculateTotal(p, allSubtotal, tax, tip))

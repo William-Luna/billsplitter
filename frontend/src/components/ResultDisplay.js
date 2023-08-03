@@ -23,7 +23,7 @@ const ResultDisplay = () => {
         {people.map(person =>
           <div key={person.id}><b>{person.name}</b> owes ${calculateTotal(person, allSubtotal, tax, tip)}.</div>
         )}
-        <DonutChart people={people} allSubtotal={allSubtotal} tax={tax} tip={tip} />
+        <DonutChart allSubtotal={allSubtotal} />
       </Paper>
     </div>
   )
