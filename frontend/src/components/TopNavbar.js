@@ -1,11 +1,13 @@
-import { AppBar, Button, Link, Toolbar, Typography } from '@mui/material'
+import Logo from '../Logo.png'
+import { AppBar, Button, Toolbar } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 const TopNavbar = () => {
   return (
-    <AppBar position="static" sx={{ mb: 2 }}>
+    <AppBar position="static" sx={{ mb: 4 }}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Typography variant="h6">Bill Splitter</Typography>
-        <Button color='inherit'><Link href='#' underline='none' color='inherit'>Login</Link></Button>
+        <Link to='/'><img src={Logo} alt='Logo' height='50' /></Link>
+        <Button component={Link} to='/login' color='inherit'>LOGIN</Button>
       </Toolbar>
     </AppBar>
   )
