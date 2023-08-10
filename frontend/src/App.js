@@ -3,9 +3,11 @@ import Footer from './components/Footer'
 import Notification from './components/Notification'
 import MainApp from './components/MainApp'
 import Login from './components/Login'
+import MissingFeature from './components/MissingFeature'
 
 import { Box, Container, CssBaseline, Paper } from '@mui/material'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+
 
 
 
@@ -24,7 +26,9 @@ const App = () => {
               <Paper elevation={2} sx={{ p: 2 }}>
                 <Routes>
                   <Route path='/login' element={<Login />} />
+                  <Route path='/login/recover' element={<MissingFeature />} />
                   <Route path='/' element={<MainApp />} />
+                  <Route path='*' element={<MissingFeature />} />
                 </Routes>
               </Paper>
             </Container>

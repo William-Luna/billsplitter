@@ -7,11 +7,14 @@ const notificationSlice = createSlice({
     setSuccessMessage(state, action) {
       return { ...state, open: true, severity: 'success', message: action.payload }
     },
+    setErrorMessage(state, action) {
+      return { ...state, open: true, severity: 'error', message: action.payload }
+    },
     closeMessage(state, action) {
       return { ...state, open: false }
     }
   }
 })
 
-export const { setSuccessMessage, closeMessage } = notificationSlice.actions
+export const { setSuccessMessage, setErrorMessage, closeMessage } = notificationSlice.actions
 export default notificationSlice.reducer
