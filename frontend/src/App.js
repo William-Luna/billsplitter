@@ -16,7 +16,7 @@ const App = () => {
     <>
       <CssBaseline />
       <Notification />
-      <Box display="flex" flexDirection="column" justifyContent="space-between" alignItems="center">
+      <Box display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" sx={{ minHeight: '100vh' }}>
         <Router>
           <TopNavbar />
           <main>
