@@ -4,7 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 const Footer = () => {
   return (
-    <Container maxWidth="lg" disableGutters={false} align="center">
+    <Container maxWidth="lg" disableGutters={false} align="center" component='footer'>
       <br />
       <Divider color="grey" />
       <Typography variant="body2" color="grey" m={1}>© 2023 William Luna</Typography>

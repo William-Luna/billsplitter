@@ -1,16 +1,18 @@
 import { Button, FormControl, TextField, Typography } from "@mui/material"
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { Link, redirect } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
 import { setUser } from "../reducers/userReducer"
 import { setErrorMessage, setSuccessMessage } from "../reducers/notificationReducer"
 import loginService from "../services/login"
+import billsService from "../services/bills"
 
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const loggedUser = useSelector(({ user }) => { return user })
+  //const loggedUser = useSelector(({ user }) => { return user })
 
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const handleLogin = async event => {
@@ -20,19 +22,18 @@ const Login = () => {
       const user = await loginService.login({ username, password })
       //user {token, username, name}
 
-      window.localStorage.setItem('loggedUser', JSON.stringify(user))
-
-      dispatch(setUser(user))
+      window.localStorage.setItem('loggedUser', JSON.stringify(user)) //set user+token in local storage
+      billsService.setToken(user.token) //set token for authorized actions e.g. saving bill
+      dispatch(setUser(user)) //set current user in state
       setUsername('')
       setPassword('')
       dispatch(setSuccessMessage(`${user.name} logged in successfully!`))
-      redirect('/')
+      navigate('/')
     } catch (exception) {
       dispatch(setErrorMessage('The username or password entered is invalid.'))
+      console.log(exception)
     }
   }
-
-  if (loggedUser) return redirect('/')
 
   return (
     <>
