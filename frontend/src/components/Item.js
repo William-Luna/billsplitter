@@ -7,9 +7,6 @@ import { setSuccessMessage } from '../reducers/notificationReducer'
 
 const Item = ({ item, person }) => {
   const dispatch = useDispatch()
-  // const people = useSelector(({ people }) => {
-  //   return people
-  // })
 
   const deleteItem = () => {
     if (window.confirm(`Deleting ${item.name}. Are you sure?`)) {

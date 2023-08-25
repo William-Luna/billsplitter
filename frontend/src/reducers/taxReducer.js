@@ -2,14 +2,20 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const taxSlice = createSlice({
   name: 'tax',
-  initialState: 0,
+  initialState: { value: 0, isPercent: false },
   reducers: {
     setTax(state, action) {
-      return action.payload
+      return { ...state, value: action.payload }
+    },
+    setIsPercent(state, action) {
+      return { ...state, isPercent: action.payload }
+    },
+    setAll(state, action) {
+      return { ...action.payload }
     }
   }
 })
 
-export const { setTax } = taxSlice.actions
+export const { setTax, setIsPercent, setAll } = taxSlice.actions
 
 export default taxSlice.reducer

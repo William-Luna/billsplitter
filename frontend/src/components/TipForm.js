@@ -1,10 +1,9 @@
 import { useDispatch } from 'react-redux'
-import { setTip } from '../reducers/tipReducer'
+import { setAll } from '../reducers/tipReducer'
 import { Button, FormControl, InputAdornment, Switch, TextField } from '@mui/material'
 import { setSuccessMessage } from '../reducers/notificationReducer'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 import { useState } from 'react'
-import calculateAllSubtotal from '../helpers/calculateAllSubtotal'
 
 const TipForm = ({ people }) => {
   const dispatch = useDispatch()
@@ -14,10 +13,10 @@ const TipForm = ({ people }) => {
     event.preventDefault()
     const tipInput = event.target.tip.value
 
-    const tip = tipPercent ? parseFloat(tipInput / 100) * calculateAllSubtotal(people) : tipInput
-
-    dispatch(setTip(tip))
-    dispatch(setSuccessMessage(`Tip has been adjusted to $${tip}.`))
+    dispatch(setAll({ value: tipInput, isPercent: tipPercent }))
+    const message = tipPercent ? `Tip has been adjusted to ${tipInput}%.`
+      : `Tip has been adjusted to $${tipInput}.`
+    dispatch(setSuccessMessage(message))
     event.target.tip.value = ''
   }
 
@@ -26,7 +25,7 @@ const TipForm = ({ people }) => {
   }
 
   const clearTip = () => {
-    dispatch(setTip(0))
+    dispatch(setAll({ value: 0, isPercent: false }))
     dispatch(setSuccessMessage(`Tip has been reset.`))
   }
 
