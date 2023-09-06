@@ -21,11 +21,11 @@ const TopNavbar = ({ isLoggedIn }) => {
   }
 
   const loginButton = () => (
-    <Button component={Link} to='/login' color='inherit'>LOGIN</Button>
+    <Button className='loginbutton' component={Link} to='/login' color='inherit'>LOGIN</Button>
   )
 
   const logoutButton = () => (
-    <Button onClick={handleLogout} color='inherit'>LOGOUT</Button>
+    <Button className='logoutbutton' onClick={handleLogout} color='inherit'>LOGOUT</Button>
   )
 
   return (
