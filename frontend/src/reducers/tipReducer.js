@@ -2,14 +2,20 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const tipSlice = createSlice({
   name: 'tip',
-  initialState: 0,
+  initialState: { value: 0, isPercent: false },
   reducers: {
     setTip(state, action) {
-      return action.payload
+      return { ...state, value: action.payload }
+    },
+    setIsPercent(state, action) {
+      return { ...state, isPercent: action.payload }
+    },
+    setAll(state, action) {
+      return { ...action.payload }
     }
   }
 })
 
-export const { setTip } = tipSlice.actions
+export const { setTip, setIsPercent, setAll } = tipSlice.actions
 
 export default tipSlice.reducer

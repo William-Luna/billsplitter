@@ -1,10 +1,9 @@
 import { useDispatch } from 'react-redux'
-import { setTax } from '../reducers/taxReducer'
+import { setAll } from '../reducers/taxReducer'
 import { Button, FormControl, InputAdornment, Switch, TextField } from '@mui/material'
 import { setSuccessMessage } from '../reducers/notificationReducer'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 import { useState } from 'react'
-import calculateAllSubtotal from '../helpers/calculateAllSubtotal'
 
 const TaxForm = ({ people }) => {
   const dispatch = useDispatch()
@@ -14,10 +13,10 @@ const TaxForm = ({ people }) => {
     event.preventDefault()
     const taxInput = event.target.tax.value
 
-    const tax = taxPercent ? parseFloat(taxInput / 100) * calculateAllSubtotal(people) : taxInput
-
-    dispatch(setTax(tax))
-    dispatch(setSuccessMessage(`Tax has been adjusted to $${tax}.`))
+    dispatch(setAll({ value: taxInput, isPercent: taxPercent }))
+    const message = taxPercent ? `Tax has been adjusted to ${taxInput}%.`
+      : `Tax has been adjusted to $${taxInput}.`
+    dispatch(setSuccessMessage(message))
     event.target.tax.value = ''
   }
 
@@ -26,7 +25,7 @@ const TaxForm = ({ people }) => {
   }
 
   const clearTax = () => {
-    dispatch(setTax(0))
+    dispatch(setAll({ value: 0, isPercent: false }))
     dispatch(setSuccessMessage(`Tax has been reset.`))
   }
 
