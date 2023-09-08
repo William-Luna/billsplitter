@@ -12,7 +12,7 @@ const PeopleList = () => {
   return (
     <div>
       <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>People List</Typography>
-      <Grid2 container>
+      <Grid2 container id='peoplelist'>
         {people.map(person =>
           <PersonDetails key={person.id} person={person} />
         )}

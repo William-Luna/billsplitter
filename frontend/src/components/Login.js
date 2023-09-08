@@ -40,9 +40,9 @@ const Login = () => {
       <Typography variant="h5" sx={{ mb: 2 }} align="center"><strong>Sign In</strong></Typography>
       <form onSubmit={handleLogin} align='center'>
         <FormControl >
-          <TextField sx={{ mb: 2 }} variant='filled' label='Username' size='small' type='text' name='username' value={username} onChange={({ target }) => setUsername(target.value)} required />
-          <TextField sx={{ mb: 2 }} variant='filled' label='Password' size='small' type='password' name='password' value={password} onChange={({ target }) => setPassword(target.value)} required />
-          <Button variant='contained' type='submit'>Sign In</Button>
+          <TextField id='username' sx={{ mb: 2 }} variant='filled' label='Username' size='small' type='text' name='username' value={username} onChange={({ target }) => setUsername(target.value)} required />
+          <TextField id='password' sx={{ mb: 2 }} variant='filled' label='Password' size='small' type='password' name='password' value={password} onChange={({ target }) => setPassword(target.value)} required />
+          <Button id='submitlogin' variant='contained' type='submit'>Sign In</Button>
         </FormControl>
       </form>
       <div>

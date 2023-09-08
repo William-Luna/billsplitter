@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addPerson } from '../reducers/peopleReducer'
 import { v4 } from 'uuid'
 import { TextField, Button, FormControl, Paper, Typography } from '@mui/material'
-import { setSuccessMessage } from '../reducers/notificationReducer'
+import { setErrorMessage, setSuccessMessage } from '../reducers/notificationReducer'
 
 const genColor = () => {
   const r = Math.floor(Math.random() * 255)
@@ -22,7 +22,10 @@ const PersonForm = () => {
     event.preventDefault()
 
     //basic same name validation
-    if (people.find(p => p.name === name)) return
+    if (people.find(p => p.name === name)) {
+      dispatch(setErrorMessage(`${name} already exists in bill. Please use differentiating names to avoid confusion.`))
+      return
+    }
 
     const newPerson = {
       id: v4(),
@@ -48,11 +51,11 @@ const PersonForm = () => {
       <Paper elevation={2} sx={{ p: 2 }}>
         <form onSubmit={addNewPerson}>
           <FormControl>
-            <TextField variant="filled" type='text' label="Name" size="small" name='name' value={name} onChange={({ target }) => setName(target.value)} required />
+            <TextField id='personformname' variant="filled" type='text' label="Name" size="small" name='name' value={name} onChange={({ target }) => setName(target.value)} required />
             <br />
-            <TextField variant="filled" type='tel' label="Phone Number (Optional)" size="small" name='phone' value={phone} onChange={({ target }) => setPhone(target.value)} />
+            <TextField id='personformtel' variant="filled" type='tel' label="Phone Number (Optional)" size="small" name='phone' value={phone} onChange={({ target }) => setPhone(target.value)} />
             <br />
-            <Button variant="contained" type='submit'>Add Person</Button>
+            <Button id='personformbutton' variant="contained" type='submit'>Add Person</Button>
           </FormControl>
         </form>
       </Paper>
